@@ -44,5 +44,15 @@ public class OrderService {
 		
 		return new OrderDTO(order);
 	}
-	
+
+	@Transactional
+	public OrderDTO setDelivered(Long id) {
+		
+		Order order = repository.getOne(id); //pegar a referência do JPA do banco de dados, e só no final ao efetuar save, acessa o banco de dados
+		order.setStatus(OrderStatus.DELIVERED);
+		order = repository.save(order); //order guarda referencia ao objeto salvo, aqui acessa o Banco de Dados
+		
+		return new OrderDTO(order);
+	}
+
 }

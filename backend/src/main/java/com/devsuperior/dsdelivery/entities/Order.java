@@ -17,11 +17,11 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -32,13 +32,23 @@ public class Order implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@EqualsAndHashCode.Include    //Considerar somente esse campo no HashCode and Equals
-	private final Long id;
-	private final String address;
-	private final Double latitude;
-	private final Double longitude;
-	private final Instant moment;
-	private final OrderStatus status;
+	private Long id;
+	private String address;
+	private Double latitude;
+	private Double longitude;
+	private Instant moment;
+	private OrderStatus status;
 	
+	public Order(Long id, String address, Double latitude, Double longitude, Instant moment, OrderStatus status) {
+		super();
+		this.id = id;
+		this.address = address;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.moment = moment;
+		this.status = status;
+	}
+
 	@Setter(value=AccessLevel.NONE)
 	@ManyToMany                                    // criando a tabela intermediária do relacionamento muitos para muitos
 	@JoinTable(name = "tb_order_product", 
@@ -46,5 +56,6 @@ public class Order implements Serializable {
 	    inverseJoinColumns = @JoinColumn(name = "product_id"))
 	private Set<Product> products = new HashSet<>();   // Initialized fields are excluded in AllArgsConstructor
 
+	
 
 }
