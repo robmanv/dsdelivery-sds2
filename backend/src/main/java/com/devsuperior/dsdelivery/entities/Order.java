@@ -15,15 +15,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -31,17 +29,15 @@ import lombok.Setter;
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@EqualsAndHashCode.Include    //Considerar somente esse campo no HashCode and Equals
-	private Long id;
-	
-	private String address;
-	private Double latitude;
-	private Double longitude;
-	private Instant moment;
-	private OrderStatus status;
+	private final Long id;
+	private final String address;
+	private final Double latitude;
+	private final Double longitude;
+	private final Instant moment;
+	private final OrderStatus status;
 	
 	@Setter(value=AccessLevel.NONE)
 	@ManyToMany                                    // criando a tabela intermediária do relacionamento muitos para muitos
