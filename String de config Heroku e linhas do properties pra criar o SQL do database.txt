@@ -1,0 +1,17 @@
+postgres://
+vwqkfbgrciusql
+:
+6eb58a6468cc274096159696d4652b636240b57b6705f78983dcad53ecc274bc
+@
+ec2-54-242-120-138.compute-1.amazonaws.com
+:
+5432
+/
+d4cup6b6eohre6
+
+# as 4 primeiras linhas executa o script de criação do banco de dados, vai gerar um arquivo create.sql na raiz, executar esse script no pgadmin, depois deleta esse create.sql
+#spring.jpa.properties.javax.persistence.schema-generation.create-source=metadata
+#spring.jpa.properties.javax.persistence.schema-generation.scripts.action=create
+#spring.jpa.properties.javax.persistence.schema-generation.scripts.create-target=create.sql
+#spring.jpa.properties.hibernate.hbm2ddl.delimiter=;
+
