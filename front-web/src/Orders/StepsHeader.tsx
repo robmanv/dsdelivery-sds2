@@ -11,7 +11,7 @@ function StepsHeader() {
             <ul className="steps-items">
                 <li>
                     <span className="steps-number">1</span>
-                    Selecione os produtos e localização
+                    Selecione os produtos e localização.
                 </li>
                 <li>
                     <span className="steps-number">2</span>
