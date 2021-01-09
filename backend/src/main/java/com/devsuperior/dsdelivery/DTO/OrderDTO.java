@@ -29,6 +29,7 @@ public class OrderDTO implements Serializable {
 	private Double longitude;
 	private Instant moment;
 	private OrderStatus status;
+	private Double total;
 	
 	@Setter(value=AccessLevel.NONE)
 	private List<ProductDTO> products = new ArrayList<>();
@@ -41,6 +42,7 @@ public class OrderDTO implements Serializable {
 		moment = entity.getMoment();
 		status = entity.getStatus();
 		products = entity.getProducts().stream().map(x -> new ProductDTO(x)).collect(Collectors.toList()); // Transformar lista de products em productDTO
+		total = entity.getTotal();
 	}
 
 	

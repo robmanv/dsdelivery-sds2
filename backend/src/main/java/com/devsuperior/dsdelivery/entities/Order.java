@@ -56,6 +56,16 @@ public class Order implements Serializable {
 	    inverseJoinColumns = @JoinColumn(name = "product_id"))
 	private Set<Product> products = new HashSet<>();   // Initialized fields are excluded in AllArgsConstructor
 
+	public Double getTotal() {
+		Double sum = 0.0;
+		
+		for (Product product : products) {
+			sum += product.getPrice();
+		}
+		
+		return sum;
+		
+	}
 	
 
 }
