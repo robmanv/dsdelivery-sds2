@@ -2,13 +2,23 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { OpenSans_700Bold } from '@expo-google-fonts/open-sans';
+import { useNavigation } from '@react-navigation/native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 export default function Header() {
+  const navigation = useNavigation();   /* hook do react, assim como useEffect, useState */
+  
+  const handleOnPress = () => {
+      navigation.navigate('Home');
+  }
+  /* a View não é clicável dai tenho que fazer o Touchable */
   return (
-    <View style={styles.container}>
-        <Image source={require('../assets/logo.png')} />
-      <Text style={styles.text}>DS Delivery</Text>
-    </View>
+    <TouchableWithoutFeedback onPress={handleOnPress}>                      
+        <View style={styles.container}>
+            <Image source={require('../assets/logo.png')} />
+        <Text style={styles.text}>DS Delivery</Text>
+        </View>
+    </TouchableWithoutFeedback>
   );
 }
 

@@ -1,14 +1,19 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import { RectButton, TouchableOpacity } from 'react-native-gesture-handler';
+import Header from '../Header';
 
 export default function Home() {
-    const handleOnPress = () => {
+    const navigation = useNavigation();   /* hook do react, assim como useEffect, useState */
 
+    const handleOnPress = () => {
+        navigation.navigate('Orders');
     }
 
   return (
       <>
+        <Header />
         <View style={styles.container}>
             <Image source={require('../assets/deliveryman.png')} />
             <Text style={styles.title}> Acompanhe os pedidos e {'\n'} entregue no prazo! </Text>
@@ -26,7 +31,7 @@ export default function Home() {
 /* OS Estilos são criados via JavaScript abaixo */
 const styles = StyleSheet.create({
         container: {
-          marginTop: '5%',
+          marginTop: '20%',
           alignItems: 'center'
         },
         title: {
@@ -45,7 +50,7 @@ const styles = StyleSheet.create({
           textAlign: 'center'
         },
         footer: {
-          marginTop: '5%',
+          marginTop: '20%',
           alignItems: 'center'
         },
         button: {
